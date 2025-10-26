@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(10/15) feat: Implement binary string to 2's complement**
+- **(11/15) feat: Allow decimal input for 2's complement**
+  - 10진수 입력을 받아 2의 보수를 계산하는 기능을 추가하고, 관련 로직을 리팩토링했습니다.
+
+- **(10/15) `8c93d4d` - feat: Implement binary string to 2's complement**
   - 2진수 문자열을 입력받아 1의 보수와 2의 보수를 계산하는 기능을 구현했습니다.
 
 - **(9/15) `0be8453` - fix: Add input validation for number base converter**
