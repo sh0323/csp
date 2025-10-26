@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(5/15) feat: Implement Decimal to any base (2, 8, 16) conversion**
+- **(6/15) feat: Implement any base (2, 8, 16) to Decimal conversion**
+  - 2, 8, 16진수를 입력받아 10진수로 변환하는 기능을 구현하고 하위 메뉴를 추가했습니다.
+
+- **(5/15) `f30757a` - feat: Implement Decimal to any base (2, 8, 16) conversion**
   - 10진수를 입력받아 2, 8, 16진수로 변환하는 기능을 구현했습니다.
 
 - **(4/15) `659d082` - feat: Add placeholder functions for each menu option**
