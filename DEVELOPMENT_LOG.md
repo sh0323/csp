@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(12/15) refactor: Move 2's complement logic to the converter class**
+- **(13/15) fix: Add input validation for 2's complement converter**
+  - 2의 보수 변환기 기능의 입력값 검증 로직을 강화하여 안정성을 높였습니다.
+
+- **(12/15) `c7c7f8a` - refactor: Move 2's complement logic to the converter class**
   - 2의 보수 계산 로직을 `NumberConverter` 클래스로 분리하여 코드 구조를 개선했습니다.
 
 - **(11/15) `efc0801` - feat: Allow decimal input for 2's complement**

@@ -94,52 +94,69 @@
 
         private static void ShowTwosComplementConverter()
         {
-            Console.Clear();
-            Console.WriteLine("=====================================");
-            Console.WriteLine("  2. 2의 보수 변환기");
-            Console.WriteLine("=====================================");
-            Console.WriteLine("입력할 숫자의 종류를 선택하세요:");
-            Console.WriteLine(" 1. 2진수");
-            Console.WriteLine(" 2. 10진수 (8비트 기준)");
-            Console.Write(">> ");
-            string? choice = Console.ReadLine();
-            string? binaryString = null;
-
-            switch (choice)
+            while (true)
             {
-                case "1":
-                    Console.Write("2진수 문자열을 입력하세요: ");
-                    binaryString = Console.ReadLine();
-                    if (string.IsNullOrEmpty(binaryString) || !binaryString.All(c => c == '0' || c == '1'))
-                    {
-                        Console.WriteLine("잘못된 입력입니다. 0과 1로만 구성된 문자열을 입력하세요.");
-                        binaryString = null; // Mark as invalid
-                    }
-                    break;
-                case "2":
-                    Console.Write("10진수 숫자를 입력하세요 (0 ~ 255): ");
-                    if (int.TryParse(Console.ReadLine(), out int decimalInput) && decimalInput >= 0 && decimalInput <= 255)
-                    {
-                        binaryString = Convert.ToString(decimalInput, 2).PadLeft(8, '0');
-                    }
-                    else
-                    {
-                        Console.WriteLine("잘못된 입력입니다. 0에서 255 사이의 정수를 입력하세요.");
-                    }
-                    break;
-                default:
-                    Console.WriteLine("잘못된 선택입니다.");
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine("=====================================");
+                Console.WriteLine("  2. 2의 보수 변환기");
+                Console.WriteLine("=====================================");
+                Console.WriteLine("입력할 숫자의 종류를 선택하세요:");
+                Console.WriteLine(" 1. 2진수");
+                Console.WriteLine(" 2. 10진수 (8비트 기준)");
+                Console.Write(">> ");
+                string? choice = Console.ReadLine();
+                string? binaryString = null;
+                bool isValidOperation = false;
 
-            if (binaryString != null)
-            {
-                var (onesComplement, twosComplement) = NumberConverter.GetTwosComplement(binaryString);
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine($" 원본 ({binaryString.Length}비트): {binaryString}");
-                Console.WriteLine($" 1의 보수: {onesComplement}");
-                Console.WriteLine($" 2의 보수: {twosComplement}");
-                Console.WriteLine("-------------------------------------");
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("2진수 문자열을 입력하세요 (최대 32자): ");
+                        binaryString = Console.ReadLine();
+                        if (string.IsNullOrEmpty(binaryString) || !binaryString.All(c => c == '0' || c == '1'))
+                        {
+                            Console.WriteLine("잘못된 입력입니다. 0과 1로만 구성된 문자열을 입력하세요.");
+                        }
+                        else if (binaryString.Length > 32)
+                        {
+                            Console.WriteLine("입력이 너무 깁니다. 32자 이하로 입력해주세요.");
+                        }
+                        else
+                        {
+                            isValidOperation = true;
+                        }
+                        break;
+                    case "2":
+                        Console.Write("10진수 숫자를 입력하세요 (0 ~ 255): ");
+                        if (int.TryParse(Console.ReadLine(), out int decimalInput) && decimalInput >= 0 && decimalInput <= 255)
+                        {
+                            binaryString = Convert.ToString(decimalInput, 2).PadLeft(8, '0');
+                            isValidOperation = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("잘못된 입력입니다. 0에서 255 사이의 정수를 입력하세요.");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("잘못된 선택입니다. 1 또는 2를 입력하세요.");
+                        break;
+                }
+
+                if (isValidOperation && binaryString != null)
+                {
+                    var (onesComplement, twosComplement) = NumberConverter.GetTwosComplement(binaryString);
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine($" 원본 ({binaryString.Length}비트): {binaryString}");
+                    Console.WriteLine($" 1의 보수: {onesComplement}");
+                    Console.WriteLine($" 2의 보수: {twosComplement}");
+                    Console.WriteLine("-------------------------------------");
+                    break; // 성공 시 루프 탈출
+                }
+
+                // 실패 시 사용자에게 알리고 다시 시도
+                Console.WriteLine("\n아무 키나 누르면 다시 시도합니다...");
+                Console.ReadKey();
             }
 
             Console.WriteLine("\n아무 키나 누르면 주 메뉴로 돌아갑니다...");
