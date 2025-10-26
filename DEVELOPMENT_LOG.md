@@ -6,6 +6,9 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
+- **(5/15) feat: Implement Decimal to any base (2, 8, 16) conversion**
+  - 10진수를 입력받아 2, 8, 16진수로 변환하는 기능을 구현했습니다.
+
 - **(4/15) `659d082` - feat: Add placeholder functions for each menu option**
   - `Main` 메서드의 코드를 별도 함수로 분리하여 구조를 개선했습니다.
 
