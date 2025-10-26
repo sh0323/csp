@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(7/15) feat: Add user interface for selecting 'from' and 'to' bases**
+- **(8/15) refactor: Structure all conversion logic into a dedicated class**
+  - 진법 변환 로직을 `NumberConverter` 클래스로 분리하여 코드 구조를 개선했습니다.
+
+- **(7/15) `3f6e42d` - feat: Add user interface for selecting 'from' and 'to' bases**
   - 진법 변환기 UI를 개선하여 모든 진법 간 변환이 가능하도록 리팩토링했습니다.
 
 - **(6/15) `60314ce` - feat: Implement any base (2, 8, 16) to Decimal conversion**
