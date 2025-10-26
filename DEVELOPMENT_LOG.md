@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(8/15) refactor: Structure all conversion logic into a dedicated class**
+- **(9/15) fix: Add input validation for number base converter**
+  - 진법 변환기 기능의 입력값 검증 로직을 강화하여 안정성을 높였습니다.
+
+- **(8/15) `4247b04` - refactor: Structure all conversion logic into a dedicated class**
   - 진법 변환 로직을 `NumberConverter` 클래스로 분리하여 코드 구조를 개선했습니다.
 
 - **(7/15) `3f6e42d` - feat: Add user interface for selecting 'from' and 'to' bases**
