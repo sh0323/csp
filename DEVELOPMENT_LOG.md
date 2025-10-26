@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(11/15) feat: Allow decimal input for 2's complement**
+- **(12/15) refactor: Move 2's complement logic to the converter class**
+  - 2의 보수 계산 로직을 `NumberConverter` 클래스로 분리하여 코드 구조를 개선했습니다.
+
+- **(11/15) `efc0801` - feat: Allow decimal input for 2's complement**
   - 10진수 입력을 받아 2의 보수를 계산하는 기능을 추가하고, 관련 로직을 리팩토링했습니다.
 
 - **(10/15) `8c93d4d` - feat: Implement binary string to 2's complement**

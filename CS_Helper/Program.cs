@@ -103,27 +103,24 @@
             Console.WriteLine(" 2. 10진수 (8비트 기준)");
             Console.Write(">> ");
             string? choice = Console.ReadLine();
+            string? binaryString = null;
 
             switch (choice)
             {
                 case "1":
                     Console.Write("2진수 문자열을 입력하세요: ");
-                    string? binaryInput = Console.ReadLine();
-                    if (string.IsNullOrEmpty(binaryInput) || !binaryInput.All(c => c == '0' || c == '1'))
+                    binaryString = Console.ReadLine();
+                    if (string.IsNullOrEmpty(binaryString) || !binaryString.All(c => c == '0' || c == '1'))
                     {
                         Console.WriteLine("잘못된 입력입니다. 0과 1로만 구성된 문자열을 입력하세요.");
-                    }
-                    else
-                    {
-                        CalculateAndPrintTwosComplement(binaryInput);
+                        binaryString = null; // Mark as invalid
                     }
                     break;
                 case "2":
                     Console.Write("10진수 숫자를 입력하세요 (0 ~ 255): ");
                     if (int.TryParse(Console.ReadLine(), out int decimalInput) && decimalInput >= 0 && decimalInput <= 255)
                     {
-                        string binaryString = Convert.ToString(decimalInput, 2).PadLeft(8, '0');
-                        CalculateAndPrintTwosComplement(binaryString);
+                        binaryString = Convert.ToString(decimalInput, 2).PadLeft(8, '0');
                     }
                     else
                     {
@@ -135,40 +132,18 @@
                     break;
             }
 
+            if (binaryString != null)
+            {
+                var (onesComplement, twosComplement) = NumberConverter.GetTwosComplement(binaryString);
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine($" 원본 ({binaryString.Length}비트): {binaryString}");
+                Console.WriteLine($" 1의 보수: {onesComplement}");
+                Console.WriteLine($" 2의 보수: {twosComplement}");
+                Console.WriteLine("-------------------------------------");
+            }
+
             Console.WriteLine("\n아무 키나 누르면 주 메뉴로 돌아갑니다...");
             Console.ReadKey();
-        }
-
-        private static void CalculateAndPrintTwosComplement(string binaryInput)
-        {
-            // 1's Complement
-            string onesComplement = new string(binaryInput.Select(c => c == '0' ? '1' : '0').ToArray());
-
-            // 2's Complement
-            char[] twosComplementArray = onesComplement.ToCharArray();
-            bool carry = true;
-            for (int i = twosComplementArray.Length - 1; i >= 0; i--)
-            {
-                if (carry)
-                {
-                    if (twosComplementArray[i] == '0')
-                    {
-                        twosComplementArray[i] = '1';
-                        carry = false;
-                    }
-                    else
-                    {
-                        twosComplementArray[i] = '0';
-                    }
-                }
-            }
-            string twosComplement = new string(twosComplementArray);
-
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine($" 원본 ({binaryInput.Length}비트): {binaryInput}");
-            Console.WriteLine($" 1의 보수: {onesComplement}");
-            Console.WriteLine($" 2의 보수: {twosComplement}");
-            Console.WriteLine("-------------------------------------");
         }
     }
 }
