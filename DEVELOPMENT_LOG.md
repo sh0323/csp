@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(9/15) fix: Add input validation for number base converter**
+- **(10/15) feat: Implement binary string to 2's complement**
+  - 2진수 문자열을 입력받아 1의 보수와 2의 보수를 계산하는 기능을 구현했습니다.
+
+- **(9/15) `0be8453` - fix: Add input validation for number base converter**
   - 진법 변환기 기능의 입력값 검증 로직을 강화하여 안정성을 높였습니다.
 
 - **(8/15) `4247b04` - refactor: Structure all conversion logic into a dedicated class**

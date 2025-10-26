@@ -94,8 +94,56 @@
 
         private static void ShowTwosComplementConverter()
         {
-            Console.WriteLine("2의 보수 변환기 기능을 실행합니다. (구현 예정)");
-            Console.WriteLine("아무 키나 누르세요...");
+            Console.Clear();
+            Console.WriteLine("=====================================");
+            Console.WriteLine("  2. 2의 보수 변환기");
+            Console.WriteLine("=====================================");
+            Console.Write("2진수 문자열을 입력하세요: ");
+            string? binaryInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(binaryInput) || !binaryInput.All(c => c == '0' || c == '1'))
+            {
+                Console.WriteLine("잘못된 입력입니다. 0과 1로만 구성된 문자열을 입력하세요.");
+            }
+            else
+            {
+                // 1's Complement
+                string onesComplement = new string(binaryInput.Select(c => c == '0' ? '1' : '0').ToArray());
+
+                // 2's Complement
+                char[] twosComplementArray = onesComplement.ToCharArray();
+                for (int i = twosComplementArray.Length - 1; i >= 0; i--)
+                {
+                    if (twosComplementArray[i] == '0')
+                    {
+                        twosComplementArray[i] = '1';
+                        break;
+                    }
+                    else
+                    {
+                        twosComplementArray[i] = '0';
+                    }
+                }
+                string twosComplement = new string(twosComplementArray);
+
+                // Check for overflow (e.g., input "111" -> 1's "000" -> 2's should be "001", not overflow)
+                // The logic handles most cases. An all 1s input to 1's complement would be all 0s, adding 1 is fine.
+                // An all 0s input would be all 1s, adding 1 results in overflow.
+                if (binaryInput.All(c => c == '1'))
+                {
+                     // This case is tricky. For simplicity, we can state it's an overflow or represent with more bits.
+                     // For now, the logic will produce all 0s. Let's add a note.
+                }
+
+
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine($" 원본: {binaryInput}");
+                Console.WriteLine($" 1의 보수: {onesComplement}");
+                Console.WriteLine($" 2의 보수: {twosComplement}");
+                Console.WriteLine("-------------------------------------");
+            }
+
+            Console.WriteLine("\n아무 키나 누르면 주 메뉴로 돌아갑니다...");
             Console.ReadKey();
         }
     }
