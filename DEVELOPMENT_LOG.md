@@ -6,7 +6,10 @@
 
 ### 📜 완료된 작업 (Completed Tasks)
 
-- **(14/15) style: Improve console output formatting**
+- **(15/15) docs: Update README.md with final usage instructions**
+  - 최종 사용법 및 실행 방법을 `README.md`에 추가하여 프로젝트 문서를 완성했습니다.
+
+- **(14/15) `90ffde5` - style: Improve console output formatting**
   - 콘솔 출력에 색상을 추가하여 가독성 및 사용자 경험을 개선했습니다.
 
 - **(13/15) `a18bd7d` - fix: Add input validation for 2's complement converter**
